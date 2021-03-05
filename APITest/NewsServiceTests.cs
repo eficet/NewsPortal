@@ -14,7 +14,7 @@ namespace APITest
         public async Task GetAllNews_shouldReturnNews_WhenItExists()
         {
             var options = new DbContextOptionsBuilder<DataContext>()
-                .UseInMemoryDatabase(databaseName: "MovieListDatabase")
+                .UseInMemoryDatabase(databaseName: "NewsPortalDatabase")
                 .Options;
             var userTest = new News {Id = 1, Title = "heyy", Text = "text"};
             using (var context = new DataContext(options))
