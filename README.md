@@ -81,7 +81,7 @@ News Entity
    This route allows admin to prefrorm POST request to search for news with a specific Search options.Your request body should hold
    the options as the folowing :
    
-   ```
+```
 {
   "Title": "News"
   "createdBy": "seeder"
