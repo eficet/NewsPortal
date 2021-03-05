@@ -2,7 +2,7 @@ namespace API.Enums
 {
     public enum NewsType
     {
-        Sport,
-        Politics
+        Sport = 1,
+        Politics = 2
     }
 }
