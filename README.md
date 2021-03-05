@@ -45,6 +45,8 @@ News Entity
 | Title    | String                    |
 | NewsType     | Enum                   |
 | Text        | String                    |
+| CreatedBy        | String                    |
+| UpdatedBy        | String                    |
 ### Routes
 
 #### User Routes:
@@ -75,8 +77,17 @@ News Entity
    This route allows admin to prefrorm GET request which get all the news.
 2. Route URL: `http://localhost:5000/api/admin/news/{put your id}`
    This route allows admin to prefrorm GET request which get a specific news by its Id.
-3. Route URL: `http://localhost:5000/api/admin/news/search?query= YourSearch`
-   This route allows admin to prefrorm Get request to search for news with a specific word in the title.
+3. Route URL: `http://localhost:5000/api/admin/news/search`
+   This route allows admin to prefrorm POST request to search for news with a specific Search options.Your request body should hold
+   the options as the folowing :
+   ```
+{
+  "Title": "News"
+  "createdBy": "seeder"
+  "updatedBy":"Admin"
+}
+```
+   NOTE: None of the options are mendatory, the option you specify will be checked and applyed. If you send an empty json then you will get all the news.
 4. Route URL: `http://localhost:5000/api/admin/news`
    This route allows admin to prefrorm POST request which will add news to the our protal.
 5. Route URL: `http://localhost:5000/api/admin/news/{put your id}`
