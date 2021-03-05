@@ -80,6 +80,7 @@ News Entity
 3. Route URL: `http://localhost:5000/api/admin/news/search`
    This route allows admin to prefrorm POST request to search for news with a specific Search options.Your request body should hold
    the options as the folowing :
+   
    ```
 {
   "Title": "News"
@@ -87,6 +88,7 @@ News Entity
   "updatedBy":"Admin"
 }
 ```
+
    NOTE: None of the options are mendatory, the option you specify will be checked and applyed. If you send an empty json then you will get all the news.
 4. Route URL: `http://localhost:5000/api/admin/news`
    This route allows admin to prefrorm POST request which will add news to the our protal.
