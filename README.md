@@ -51,7 +51,7 @@ News Entity
 
 1. Route URL: `http://localhost:5000/users/login`
    Allows the user to login and returns a token.
-    To login as and admin:
+    To login as admin:
 
 ```
 {
@@ -77,9 +77,9 @@ News Entity
    This route allows admin to prefrorm GET request which get a specific news by its Id.
 3. Route URL: `http://localhost:5000/api/admin/news/search?query= YourSearch`
    This route allows admin to prefrorm Get request to search for news with a specific word in the title.
-4.Route URL: `http://localhost:5000/api/admin/news`
+4. Route URL: `http://localhost:5000/api/admin/news`
    This route allows admin to prefrorm POST request which will add news to the our protal.
-5.Route URL: `http://localhost:5000/api/admin/news/{put your id}`
+5. Route URL: `http://localhost:5000/api/admin/news/{put your id}`
    This route allows admin to prefrorm POST request which will update a specific news by its Id.
 #### Sincerely
 
