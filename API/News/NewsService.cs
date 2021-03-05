@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Constants;
 using API.Data;
 using API.Entities;
 using API.Interfaces;
@@ -33,13 +34,36 @@ namespace API.Services
             {
                 Text = newsDto.Text,
                 Title = newsDto.Title,
-                NewsType = newsDto.NewsType
+                NewsType = newsDto.NewsType,
+                CreatedBy = UserRoles.Admin
+              
             };
             _dataContext.News.Add(news);
             await _dataContext.SaveChangesAsync();
             return news ;
         }
+        public async Task<List<News>> Search(AdminSearchDto adminSearch)
+        {
+            IQueryable<News> query = _dataContext.News;
+            if (adminSearch.Title != null)
+            {
+                query = _dataContext.News.Where(n => n.Title.Contains(adminSearch.Title));
+            }
 
+            if (adminSearch.CreatedBy != null)
+            {
+                query = _dataContext.News.Where(n => n.CreatedBy == adminSearch.CreatedBy);
+
+            }
+
+            if (adminSearch.UpdatedBy != null)
+            {
+                query = _dataContext.News.Where(n => n.UpdatedBy == adminSearch.UpdatedBy);
+
+            }
+            return await query.ToListAsync();
+           
+        }
         public async Task<List<News>> Search(string query)
         {
             return await _dataContext.News.Where(n => n.Title.Contains(query)).ToListAsync();
@@ -53,8 +77,9 @@ namespace API.Services
             if(newsDto.Title != null) news.Title = newsDto.Title;
             if(newsDto.NewsType != 0) news.NewsType = newsDto.NewsType;
             if(newsDto.Text != null) news.Text = newsDto.Text;
+            news.UpdatedBy = UserRoles.Admin;
 
-            _dataContext.Update(news);
+            _dataContext.News.Update(news);
             await _dataContext.SaveChangesAsync();
             return news;
         }

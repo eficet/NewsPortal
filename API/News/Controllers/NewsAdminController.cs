@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using API.Common;
 using API.Constants;
 using API.Controllers.Base;
 using API.Entities;
+using API.Errors;
 using API.Interfaces;
 using API.Services.DTOs;
 using Microsoft.AspNetCore.Authorization;
@@ -56,10 +59,18 @@ namespace API.Controllers
                 Data = createdNews
             };
         }
-        [HttpPost("{id:int}")]
+        [HttpPut("{id:int}")]
         public async Task<ActionResult<MainResponse<News>>> UpdateNews(int id, CreateNewsDto newsDto)
         {
-            var updatedNews = await _newsService.UpdateNews(id, newsDto);
+            News updatedNews;
+            try
+            {
+                updatedNews = await _newsService.UpdateNews(id, newsDto);
+            }
+            catch (Exception e)
+            {
+                return NotFound(new ApiException((int) HttpStatusCode.NotFound, e.Message));
+            }
             return new MainResponse<News>
             {
                 Path = HttpContext.Request.Path,
@@ -68,10 +79,10 @@ namespace API.Controllers
             };
         }
         
-        [HttpGet("search")]
-        public async Task<ActionResult<MainResponse<List<News>>>> Search(string query)
+        [HttpPost("search")]
+        public async Task<ActionResult<MainResponse<List<News>>>> Search(AdminSearchDto searchDto)
         {
-            var result = await _newsService.Search(query);
+            var result = await _newsService.Search(searchDto);
             return new MainResponse<List<News>>
             {
                 Path = HttpContext.Request.Path,

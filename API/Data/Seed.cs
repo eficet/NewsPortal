@@ -39,11 +39,14 @@ namespace API.Data
                     {
                     Title = $" New news {i}",
                     NewsType = NewsType.Politics,
-                    Text = $" hey this is my random text {i}"
+                    Text = $" hey this is my random text {i}",
+                    CreatedBy = "seeder"
                 },new News{
                     Title = $" Something Happened {i}",
                     NewsType = NewsType.Sport,
-                    Text = $" hey this is my sport news number {i}"
+                    Text = $" hey this is my sport news number {i}",
+                    CreatedBy = "seeder"
+              
                     
                 }});
             }
