@@ -34,8 +34,8 @@ App user Entity:
 | ------------ | ------------------------- |
 | id         | Unique id for the user    |
 | Username    | String                    |
-| PasswordSalt     | String                    |
-| PasswordHash        | String                    |
+| PasswordSalt     | byte[]                    |
+| PasswordHash        | byte[]                    |
 | UserRole | Enum of user type |
 
 News Entity 
