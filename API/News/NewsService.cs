@@ -40,9 +40,9 @@ namespace API.Services
             return news ;
         }
 
-        public async Task<List<News>> Search(string title)
+        public async Task<List<News>> Search(string query)
         {
-            return await _dataContext.News.Where(n => n.Title.Contains(title)).ToListAsync();
+            return await _dataContext.News.Where(n => n.Title.Contains(query)).ToListAsync();
         }
 
         public async Task<News> UpdateNews(int id,CreateNewsDto newsDto)

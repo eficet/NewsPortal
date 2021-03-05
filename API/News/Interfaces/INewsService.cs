@@ -10,7 +10,7 @@ namespace API.Interfaces
         public Task<List<News>> GetAllNews();
         public Task<News> GetNewsById(int id);
         public Task<News> CreateNews(CreateNewsDto newsDto);
-        public Task<List<News>> Search(string title);
+        public Task<List<News>> Search(string titleSearch);
         public Task<News> UpdateNews(int id,CreateNewsDto newsDto);
     }
 }

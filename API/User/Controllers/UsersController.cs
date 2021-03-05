@@ -16,15 +16,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    public class UserController : BaseApiController
+    public class UsersController : BaseApiController
     {
-        private readonly DataContext _dataContext;
         private readonly IJWTAuthService _jwtAuthService;
         private readonly IUserService _userService;
 
-        public UserController(DataContext dataContext, IJWTAuthService jwtAuthService,IUserService userService)
+        public UsersController( IJWTAuthService jwtAuthService,IUserService userService)
         {
-            _dataContext = dataContext;
             _jwtAuthService = jwtAuthService;
             _userService = userService;
         }

@@ -47,9 +47,9 @@ namespace API.Controllers
         
         [AllowAnonymous]
         [HttpGet("search")]
-        public async Task<ActionResult<MainResponse<List<News>>>> Search(string search)
+        public async Task<ActionResult<MainResponse<List<News>>>> Search(string query)
         {
-            var result = await _newsService.Search(search);
+            var result = await _newsService.Search(query);
             return new MainResponse<List<News>>
             {
                 Path = HttpContext.Request.Path,
