@@ -49,7 +49,7 @@ News Entity
 
 #### User Routes:
 
-1. Route URL: `http://localhost:500/users/login`
+1. Route URL: `http://localhost:5000/users/login`
    Allows the user to login and returns a token.
     To login as and admin:
 
